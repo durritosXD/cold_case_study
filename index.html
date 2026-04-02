@@ -1,0 +1,127 @@
+<!-- app shell with all 9 UI sections -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cold Case AI — Forensic Analysis Engine</title>
+  <script type="module" crossorigin src="/cold_case_study/assets/index-1EkZCOEs.js"></script>
+  <link rel="stylesheet" crossorigin href="/cold_case_study/assets/index-BXaSgkJe.css">
+</head>
+<body>
+
+  <!-- ── HEADER ──────────────────────────────────────────────────────── -->
+  <header>
+    <div class="logo">COLD CASE AI</div>
+    <div class="tagline">Forensic Analysis Engine</div>
+    <div class="divider"></div>
+  </header>
+
+  <!-- ── INPUT PANEL ────────────────────────────────────────────────── -->
+  <section class="input-panel">
+    <label for="case-input">Case Details</label>
+    <textarea
+      id="case-input"
+      placeholder="Paste case details, Wikipedia article, Reddit post, or news report..."
+    ></textarea>
+
+    <div class="input-actions">
+      <button class="btn-secondary" id="upload-btn">📂 Upload .txt File</button>
+      <input type="file" id="file-upload" accept=".txt" />
+      <button class="btn-preset" id="btn-cooper">D.B. Cooper</button>
+      <button class="btn-preset" id="btn-zodiac">Zodiac Killer</button>
+      <button class="btn-preset" id="btn-dahlia">Black Dahlia</button>
+    </div>
+
+    <button id="analyse-btn">ANALYSE CASE</button>
+
+    <div id="loading">
+      <div class="spinner"></div>
+      <span>Reconstructing timeline...</span>
+    </div>
+
+    <div id="error-box"></div>
+  </section>
+
+  <!-- ── RESULTS ────────────────────────────────────────────────────── -->
+  <div id="results">
+
+    <!-- 1. Case Summary -->
+    <section class="result-section" id="section-summary" style="display:none">
+      <div class="section-title">Case Summary</div>
+      <div class="summary-card">
+        <p id="summary-text"></p>
+      </div>
+    </section>
+
+    <!-- 2. Suspects -->
+    <section class="result-section" id="section-suspects" style="display:none">
+      <div class="section-title">Suspect Rankings</div>
+      <div class="suspects-grid" id="suspects-grid"></div>
+    </section>
+
+    <!-- 3. Timeline -->
+    <section class="result-section" id="section-timeline" style="display:none">
+      <div class="section-title">Reconstructed Timeline</div>
+      <div class="timeline-container">
+        <div id="timeline-entries"></div>
+      </div>
+    </section>
+
+    <!-- 4. Inconsistencies -->
+    <section class="result-section" id="section-inconsistencies" style="display:none">
+      <div class="section-title">Inconsistency Flags</div>
+      <div class="inconsistencies-list" id="inconsistencies-list"></div>
+    </section>
+
+    <!-- 5. Evidence Locker -->
+    <section class="result-section" id="section-evidence" style="display:none">
+      <div class="section-title">Evidence Locker</div>
+      <div class="evidence-grid" id="evidence-grid"></div>
+    </section>
+
+    <!-- 6. Missing Information -->
+    <section class="result-section" id="section-missing" style="display:none">
+      <div class="section-title">What Investigators Missed</div>
+      <div class="missing-box">
+        <ul id="missing-list"></ul>
+      </div>
+    </section>
+
+    <!-- 7. AI Verdict -->
+    <section class="result-section" id="section-verdict" style="display:none">
+      <div class="verdict-card">
+        <div class="verdict-title">VERDICT</div>
+        <p id="verdict-scenario"></p>
+
+        <div class="confidence-label">
+          <span>Confidence</span>
+          <span id="verdict-pct">0%</span>
+        </div>
+        <div class="confidence-bar-bg">
+          <div class="confidence-bar-fill" id="verdict-bar-fill"></div>
+        </div>
+
+        <details class="verdict-reasoning-toggle">
+          <summary>▸ Show Reasoning</summary>
+          <p id="verdict-reasoning"></p>
+        </details>
+      </div>
+    </section>
+
+    <!-- 8. Geographic Profiling -->
+    <section class="result-section" id="section-geo" style="display:none">
+      <div class="section-title">Geographic Profiling</div>
+      <div class="geo-card" id="geo-text"></div>
+    </section>
+
+    <!-- 9. Next Steps -->
+    <section class="result-section" id="section-nextsteps" style="display:none">
+      <div class="section-title">Investigative Next Steps</div>
+      <div class="next-steps-list" id="next-steps-list"></div>
+    </section>
+
+  </div><!-- /results -->
+
+</body>
+</html>
