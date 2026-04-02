@@ -30,42 +30,34 @@ A noir-themed web app that ingests any cold case text and returns a structured f
 3. Click **Get API Key** → **Create API Key**
 4. Copy the key
 
-### 2. Add your key to app.js
+### 2. Add your key locally
 
-Open `app.js` and replace:
+Create a file named `.env` in the root directory and add:
 
-```js
-const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+```env
+VITE_GEMINI_API_KEY=your_actual_key_here
 ```
-
-with your actual key.
-
-> **Security tip:** Before pushing to GitHub, either remove the key from the file
-> and prompt for it on page load, or set a strict daily quota cap in AI Studio.
 
 ### 3. Add case text files
 
 Open each file in `cases/` and replace the placeholder text with the full
-Wikipedia article text for that case (copy-paste from Wikipedia, it's public domain).
+Wikipedia article text for that case.
 
 ### 4. Run locally
 
-Just open `index.html` in any browser. No build step, no npm.
-
-Or use a local server (avoids ES module CORS issues):
-
 ```bash
-python3 -m http.server 8080
-# then open http://localhost:8080
+npm install
+npm run dev
+# then open http://localhost:5173
 ```
 
 ## Deploy to GitHub Pages
 
-1. Create a new GitHub repo called `cold-case-analyser`
-2. Push all files to the `main` branch
-3. Go to **Settings → Pages**
-4. Set Source: **Deploy from branch → main → / (root)**
-5. Live at: `https://yourusername.github.io/cold-case-analyser`
+1. **GitHub Secret**: Go to your repo **Settings > Secrets > Actions** and add `VITE_GEMINI_API_KEY`.
+2. **Push Code**: Just push to the `main` branch.
+3. **GitHub Action**: The build and deployment will happen automatically via GitHub Actions.
+4. **Final Step**: Once the build finishes, go to **Settings > Pages** and set the source to **GitHub Actions**.
+5. Live at: `https://durritosXD.github.io/cold_case_study`
 
 ## File Structure
 
