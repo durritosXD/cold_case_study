@@ -256,13 +256,13 @@ function setLoading(loading) {
 
 function showError(msg) {
   const el = document.getElementById('error-box');
-  el.textContent = msg;
+  el.innerHTML = msg; // Support HTML for links
   el.style.display = 'block';
 }
 
 function clearError() {
   const el = document.getElementById('error-box');
-  el.textContent = '';
+  el.innerHTML = '';
   el.style.display = 'none';
 }
 
@@ -309,7 +309,16 @@ async function onAnalyse() {
     const result = await analyseCase(text);
     renderAnalysis(result);
   } catch (err) {
-    showError(`Analysis failed: ${err.message}. Check your API key or try again.`);
+    let msg = `Analysis failed: ${err.message}.`;
+    
+    if (err.message.toLocaleLowerCase().includes("leaked") || err.message.includes("401") || err.message.includes("403")) {
+      msg = `<strong>ACCESS REVOKED:</strong> API Key leaked or invalid. <br><br> 
+             1. Go to <a href="https://aistudio.google.com/" target="_blank">Google AI Studio</a> <br>
+             2. Generate a new key <br>
+             3. Update your <code>.env</code> file.`;
+    }
+    
+    showError(msg);
     console.error(err);
   } finally {
     setLoading(false);

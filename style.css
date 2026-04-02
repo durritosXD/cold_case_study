@@ -195,16 +195,53 @@ button:disabled { opacity: 0.4; cursor: not-allowed; }
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ─── ERROR BOX ──────────────────────────────────────────────────────────────── */
+/* ─── ERROR BOX (Noir Memo Style) ────────────────────────────────────────────── */
 #error-box {
   display: none;
-  background: rgba(224,92,92,0.1);
-  border: 1px solid var(--danger);
-  border-radius: 3px;
+  background: #fdfdfd; /* Off-white paper */
+  border-top: 10px solid var(--danger);
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 2px solid #aaa;
+  color: #1a1a1a;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  position: relative;
+  font-family: 'Special Elite', cursive;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+  transform: rotate(-0.5deg);
+}
+
+#error-box::before {
+  content: "INTERNAL MEMO / URGENT";
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
   color: var(--danger);
-  padding: 0.8rem 1rem;
-  font-size: 0.85rem;
-  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--danger);
+  padding-bottom: 0.3rem;
+}
+
+#error-box a {
+  color: var(--danger);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* Stamped effect for the error box */
+#error-box::after {
+  content: "REVOKED";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  color: rgba(144, 48, 48, 0.4);
+  border: 4px double rgba(144, 48, 48, 0.4);
+  padding: 2px 8px;
+  transform: rotate(15deg);
+  pointer-events: none;
 }
 
 /* ─── FADE IN ANIMATION ─────────────────────────────────────────────────────── */
