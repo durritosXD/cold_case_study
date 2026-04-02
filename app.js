@@ -197,19 +197,36 @@ function renderNextSteps(data) {
   show('section-nextsteps');
 }
 
-function renderAnalysis(data) {
-  // sections.innerHTML = ''; // REMOVED BUG: This was deleting the UI scaffolding
+async function renderAnalysis(data) {
+  const delay = (ms) => new Promise(res => setTimeout(res, ms));
 
   renderSummary(data);
+  await delay(400);
+
   renderSuspects(data);
+  await delay(600);
+
   renderTimeline(data);
+  await delay(400);
+
   renderInconsistencies(data);
+  await delay(300);
+
   renderEvidence(data);
+  await delay(300);
+
   renderGeographic(data);
+  await delay(300);
+
   renderNextSteps(data);
+  await delay(300);
+
   renderMissing(data);
+  await delay(300);
+
   renderVerdict(data);
 
+  // Scroll to results only after first few sections appear
   document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 }
 
