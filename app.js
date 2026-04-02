@@ -70,7 +70,7 @@ function suspectBorderColor(score) {
   return "var(--success)";
 }
 
-// ─── RENDERERS ───────────────────────────────────────────────────────────────
+
 function renderSummary(data) {
   const el = document.getElementById('summary-text');
   if (el) el.textContent = data.case_summary;
@@ -213,7 +213,7 @@ function renderAnalysis(data) {
   document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ─── UI HELPERS ──────────────────────────────────────────────────────────────
+
 function show(id) {
   const el = document.getElementById(id);
   if (el) {
